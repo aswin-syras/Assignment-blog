@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+   # byebug
+    @posts = Post.all.page(params[:page]).per(2)
   end
 
   def edit

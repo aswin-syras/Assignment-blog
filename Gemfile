@@ -63,3 +63,4 @@ end
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'kaminari'

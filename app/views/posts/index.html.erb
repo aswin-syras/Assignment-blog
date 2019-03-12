@@ -30,7 +30,7 @@
     <th>Text</th>
     <th></th>
   </tr>
- 
+ <%= paginate @posts %>
   <% @posts.each do |post| %>
     <tr>
       <td><%= post.title %></td>
