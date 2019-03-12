@@ -1,21 +1,53 @@
-<h1>Listing post</h1>
+<div>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Home Page</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", new_post_path, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+      </nav>
+    </div>
+    <div style="margin-top: 50px">
+    <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Listing post</h1>
 <h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'posts' %>
-<%= link_to 'New post', new_post_path %> 
-<table>
+<table class="table table-hover">
   <tr>
     <th>Title</th>
     <th>Text</th>
     <th></th>
   </tr>
- 
+ <%= paginate @posts %>
   <% @posts.each do |post| %>
     <tr>
       <td><%= post.title %></td>
       <td><%= post.text %></td>
-       <td><%= link_to 'Show', post_path(post) %></td>
-      <td><%= link_to 'Edit', post_path(post) %></td>
-      <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', post_path(post) %></td>
+      <%if user_signed_in?%>
+        <%if post.user_id == current_user.id %>
+          <td><%= link_to 'Edit', post_path(post) %></td>
+          <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end%>
     </tr>
   <% end %>
+  <% end %>
 </table>
+ <button class="btn btn-danger">My Blog</button>
+<%= link_to 'New post', new_post_path %> 
+    </div>
+  </div>
+</div>
+</div>
