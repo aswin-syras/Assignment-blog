@@ -19,7 +19,7 @@
       </nav>
     </div>
     <div style="margin-top: 50px">        
-<%= form_with scope: :post,url: posts_path, local: true do |form| %>
+<%= form_with scope: :post,url: posts_path, local: true  do |form| %>
    <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -48,6 +48,8 @@
     <%= form.label :text %><br>
     <%= form.text_area :text %>
   </p>
+  <%= form.file_field :photo %>
+
  
   <p>
     <%= form.submit %>

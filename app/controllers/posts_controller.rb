@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def index
-   # byebug
     @posts = Post.all.page(params[:page]).per(2)
   end
 
@@ -45,6 +44,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :photo)
   end
 end
